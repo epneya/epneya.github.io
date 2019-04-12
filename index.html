@@ -3,9 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title> @epneya </title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <div class="circle"></div>
+    <section class="landing">
+      <div class="circle"></div>
+    </section>
+    <section class="boxmuller">
+      <h1><a href="https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform">Box–Muller transform</a></h1>
+      <p>A simple random number generator working with the box-muller-method to generate normally distributed random numbers.</p>
+      <input id="mu" type="text" placeholder="&mu; (expected value)">
+      <input id="sigma" type="text" placeholder="&sigma;² (variance)">
+      <div class="options">
+        <input id="round" type="checkbox"><span>round</span>
+      </div>
+      <button onclick="boxmuller();">Generate</button>
+      <div id="output"></div>
+      <script src="js/boxmuller.js"></script>
+    </section>
   </body>
 </html>

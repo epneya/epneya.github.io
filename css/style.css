@@ -1,16 +1,63 @@
 body {
-  align-items: center;
   background-color: #eeeeee;
-  display: flex;
-  height: 100vh;
-  justify-content: center;
   margin: 0px;
-  width: 100vw;
+  overflow-x: hidden;
 }
 
-  .circle {
-    background-color: #2e3131;
-    border-radius: 50%;
-    height: 50vh;
-    width: 50vh;
+  .landing {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    width: 100vw;
   }
+
+    .circle {
+      background-color: #2e3131;
+      border-radius: 50%;
+      height: 50vh;
+      width: 50vh;
+    }
+
+  .boxmuller {
+    box-sizing: border-box;
+    color: #2e3131;
+    font-family: 'Lato';
+    height: 100vh;
+    padding: 100px;
+    width: 100vw;
+  }
+
+    .boxmuller a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .boxmuller input[type="text"] {
+      box-sizing: border-box;
+      float: left;
+      margin: 10px;
+      width: calc(100% / 2 - 110px);
+    }
+
+    .boxmuller .options {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      float: left;
+      justify-content: center;
+      margin: 10px 0px;
+      width: 60px;
+    }
+
+    .boxmuller button {
+      float: left;
+      margin: 10px;
+      width: 80px;
+    }
+
+    #output {
+      font-size: 48px;
+      text-align: center;
+      width: 100%;
+    }
