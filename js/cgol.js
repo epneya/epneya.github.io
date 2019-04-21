@@ -1,5 +1,6 @@
 const canvas = document.getElementById('cgol');
 const ctx = canvas.getContext('2d');
+let playing = false;
 let board = [];
 
 function init() {
@@ -13,14 +14,14 @@ function init() {
 function update() {
   let newBoard = [];
   for (let i = 0, c = 0; i < board.length; i++) {
-    if (board[i - canvas.width / 10 - 1]) c++;
+    if (board[i - canvas.width / 10 - 1] && i % (canvas.width / 10) > 0) c++;
     if (board[i - canvas.width / 10]) c++;
-    if (board[i - canvas.width / 10 + 1]) c++;
-    if (board[i -  1] && !(i % canvas.width / 10)) c++;
-    if (board[i +  1] && (i % canvas.width / 10) != (canvas.width / 10) - 1) c++;
-    if (board[i + canvas.width / 10 - 1]) c++;
+    if (board[i - canvas.width / 10 + 1] && i % (canvas.width / 10) != (canvas.width / 10) - 1) c++;
+    if (board[i -  1] && i % (canvas.width / 10) > 0) c++;
+    if (board[i +  1] && i % (canvas.width / 10) != (canvas.width / 10) - 1) c++;
+    if (board[i + canvas.width / 10 - 1] && i % (canvas.width / 10) > 0) c++;
     if (board[i + canvas.width / 10]) c++;
-    if (board[i + canvas.width / 10 + 1]) c++;
+    if (board[i + canvas.width / 10 + 1] && i % (canvas.width / 10) != (canvas.width / 10) - 1) c++;
 
     if (!board[i]) {
       newBoard[i] = c == 3 ? 1 : 0;
@@ -46,13 +47,21 @@ function main() {
   let FRAMES = 0, TICKS = 0;
   init();
 
+  canvas.onclick = function () {
+    playing = !playing;
+  };
+
+  draw();
+
   let loop = function () {
-    if (FRAMES % 30 == 0) {
-      update();
-      draw();
-      TICKS++;
+    if (playing) {
+      if (FRAMES % 30 == 0) {
+        update();
+        draw();
+        TICKS++;
+      }
+      FRAMES++;
     }
-    FRAMES++;
     window.requestAnimationFrame(loop, canvas);
   };
   window.requestAnimationFrame(loop, canvas);
