@@ -61,3 +61,21 @@ body {
       text-align: center;
       width: 100%;
     }
+
+    .cgol {
+      box-sizing: border-box;
+      color: #2e3131;
+      font-family: 'Lato';
+      height: 100vh;
+      padding: 100px;
+      width: 100vw;
+    }
+
+      .cgol a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      #cgol {
+        border: 1px solid #2e3130;
+      }
