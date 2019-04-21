@@ -3,9 +3,9 @@ const ctx = canvas.getContext('2d');
 let board = [];
 
 function init() {
-  canvas.width = 200;
-  canvas.height = 200;
-  for (let i = 0; i < 20 * 20; i++) {
+  canvas.width = 400;
+  canvas.height = 400;
+  for (let i = 0; i < (canvas.width / 10) * (canvas.height / 10); i++) {
     board[i] = Math.round(Math.random());
   }
 }
@@ -13,14 +13,14 @@ function init() {
 function update() {
   let newBoard = [];
   for (let i = 0, c = 0; i < board.length; i++) {
-    if (board[i - 21]) c++;
-    if (board[i - 20]) c++;
-    if (board[i - 19]) c++;
-    if (board[i -  1] && !(i % 20)) c++;
-    if (board[i +  1] && (i % 20) != 19) c++;
-    if (board[i + 19]) c++;
-    if (board[i + 20]) c++;
-    if (board[i + 21]) c++;
+    if (board[i - canvas.width / 10 - 1]) c++;
+    if (board[i - canvas.width / 10]) c++;
+    if (board[i - canvas.width / 10 + 1]) c++;
+    if (board[i -  1] && !(i % canvas.width / 10)) c++;
+    if (board[i +  1] && (i % canvas.width / 10) != (canvas.width / 10) - 1) c++;
+    if (board[i + canvas.width / 10 - 1]) c++;
+    if (board[i + canvas.width / 10]) c++;
+    if (board[i + canvas.width / 10 + 1]) c++;
 
     if (!board[i]) {
       newBoard[i] = c == 3 ? 1 : 0;
@@ -36,7 +36,7 @@ function update() {
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < board.length; i++) {
-    if (board[i] == 1) ctx.fillRect(10 * (i % 20), 10 * Math.floor(i / 20), 10, 10);
+    if (board[i] == 1) ctx.fillRect(10 * (i % (canvas.width / 10)), 10 * Math.floor(i / (canvas.height / 10)), 10, 10);
   }
 }
 
